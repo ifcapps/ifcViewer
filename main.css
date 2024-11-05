@@ -1,0 +1,133 @@
+body {
+	margin: 0;
+	background-color: rgb(221, 235, 238);
+	color: #565656;
+	font-family: Monospace;
+	font-size: 13px;
+	line-height: 24px;
+	overscroll-behavior: none;
+    height: 100vh;
+}
+
+a {
+	color: rgb(20, 54, 128);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#toolbar {
+	position: absolute;
+	top: 0px;
+	width: 80%;
+	padding: 0px;
+	box-sizing: border-box;
+	text-align: left;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	/* pointer-events: none; */
+}
+
+button.toolButton {
+	border: none;
+	outline:none;
+	padding:3px;
+	height:30px;
+	width:30px;
+	opacity: 0.6;
+	display:block;
+	filter: alpha(opacity=60);
+	z-index: 7 !important;
+}
+
+input[type=checkbox] {
+	width: 12px;
+	height: 12px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+button.toolButton:hover {
+	background-color: #dcdcdc;
+}
+
+.hummingbird-treeview,.hummingbird-treeview *{list-style:none;font-size:12px;line-height:14px;margin:0px;padding:0px;}
+.hummingbird-treeview label{font-weight:normal;background:none;}
+.hummingbird-treeview ul:not(.hummingbird-base){display:none}
+.hummingbird-treeview .fa{font-style:normal;cursor:pointer}
+.hummingbird-treeview .fas{font-style:normal;cursor:pointer}
+.hummingbird-base{white-space:nowrap;margin:0px;padding:0px;}
+.hummingbird-base ul {padding-left: 8px;padding-right:0px;}
+.hummingbird-base i {padding: 0px;margin:0px;cursor:pointer;font-size:14px;width:10px;height:10px;}
+.hummingbird-end-node input{margin-left: 18px;} 
+
+
+/*encode svg: https://yoksel.github.io/url-encoder/*/
+.fa-angle-right {
+	margin:0px;
+	padding:0px;
+	width: 10px;height: 10px;
+	display: inline-block;
+	background-image: url("data:image/svg+xml,%3Csvg version='1.1' viewBox='0.0 0.0 1100.0 1100.0' fill='none' stroke='none' stroke-linecap='square' stroke-miterlimit='10' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%2367839a' d='m 595,576 q 0,-13 -10,-23 L 119,87 Q 109,77 96,77 83,77 73,87 l -50,50 q -10,10 -10,23 0,13 10,23 L 416,576 23,969 q -10,10 -10,23 0,13 10,23 l 50,50 q 10,10 23,10 13,0 23,-10 L 585,599 q 10,-10 10,-23 z' fill-rule='nonzero'/%3E%3C/g%3E%3C/svg%3E");
+}
+.fa-angle-down {
+	margin:0px;
+	padding:0px;
+	width: 10px;height: 10px;
+	display: inline-block;
+	background-image: url("data:image/svg+xml,%3Csvg version='1.1' viewBox='0.0 0.0 1100.0 1100.0' fill='none' stroke='none' stroke-linecap='square' stroke-miterlimit='10' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%2367839a' d='m 1075,352 q 0,-13 -10,-23 l -50,-50 q -10,-10 -23,-10 -13,0 -23,10 L 576,672 183,279 q -10,-10 -23,-10 -13,0 -23,10 l -50,50 q -10,10 -10,23 0,13 10,23 l 466,466 q 10,10 23,10 13,0 23,-10 l 466,-466 q 10,-10 10,-23 z' fill-rule='nonzero'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.treeviewItemSelected { background: rgba(83, 148, 132, 0.4); font-weight: bold; border: #263952 1px dotted; border-radius: 2px;}
+.treeviewItemSnapped { background: rgba(167, 206, 196, 0.4); font-weight: bold; border: #115011 1px dotted; border-radius: 2px;}
+label{background: none;background-color: transparent;}
+
+.splitterHorizonal{position:absolute;top:0;left:0;z-index: 100 !important;width:5px;height:100%;background-color: rgba(171, 199, 192, 0.4);cursor: ew-resize;}
+.splitterVertical{position:absolute;top:0;left:0;z-index: 100 !important;height:5px;width:100%;background-color: rgba(171, 199, 192, 0.4);cursor: ns-resize;}
+
+#dropZone {
+	position: absolute;
+	width: 45vw;
+	height: 25vh; /* 25% of viewport height */
+	top: 50%;     /* Position at the vertical center */
+	left: 50%;    /* Position at the horizontal center */
+	transform: translate(-50%, -50%); /* Offset to center element exactly */
+	background-color: rgba(205, 210, 210, 0.65);
+	color: rgb(20, 85, 85);
+	font-size: 20px;
+
+	border: 1px dashed #0a4c4e;
+	border-radius: 6px;
+	
+	padding: 10px;
+	display: grid;
+	place-items: center; /* Centers both vertically and horizontally */
+	transition: all 0.3s ease;
+	z-index: 101;
+}
+
+#dropZone.fullscreen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	padding: 20px;
+	transform: none; /* Remove transform when fullscreen */
+	background-color: rgba(205, 210, 210, 0.5);
+	/*background-color: rgba(0, 0, 0, 0.5);*/
+	color: white;
+	font-size: 24px;
+	z-index: 110;
+}
+
+/*
+#finput {
+	display: none;  Hidden file input 
+}
+	*/
